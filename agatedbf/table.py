@@ -19,8 +19,6 @@ def from_dbf(cls, path, encoding=None):
         dependency you can not pass a file handle. It must be a path.
     """
     dbf = DBF(path, load=True, encoding=encoding, recfactory=recfactory)
-    table = agate.Table(dbf.records, column_names=dbf.field_names)
-
-    return table
+    return agate.Table(dbf.records, column_names=dbf.field_names)
 
 agate.Table.from_dbf = classmethod(from_dbf)
